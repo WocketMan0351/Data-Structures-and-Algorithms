@@ -84,12 +84,46 @@ public class SinglyLinkedList<E> {
 		return answer;
 	}
 
+	public boolean equals(Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (getClass() != object.getClass()) {
+			return false;
+		}
+
+		SinglyLinkedList other = (SinglyLinkedList) object;
+
+		if (size != other.size) {
+			return false;
+		}
+
+		Node walkA = head;
+		Node walkB = other.head;
+
+		while (walkA != null) {
+			if (!walkA.getElement().equals(walkB.getElement())) {
+				return false;
+			}
+			walkA = walkA.getNext();
+			walkB = walkB.getNext();
+		}
+
+		return true;
+	}
+
 	public static void main(String[] args) {
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 		for (int i = 0; i < 100; i++) {
 			list.addLast((int) Math.round(i * 100));
 		}
 
+		SinglyLinkedList<Integer> list2 = new SinglyLinkedList<>();
+		for (int i = 0; i < 100; i++) {
+			list2.addLast((int) Math.round(i * 100));
+		}
+
+		System.out.println(list.equals(list2));
 	}
 
 }

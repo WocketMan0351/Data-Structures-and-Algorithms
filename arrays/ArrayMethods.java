@@ -33,9 +33,12 @@ public class ArrayMethods {
 		// returns index of 87
 
 		// equals
-		System.out.println("equals(): " + Arrays.equals(ints, copiedArray)); // returns true if A and B have same values
-																				// in same
-																				// order
+		// (the same as ints == copiedArray because arrays aren't a true class
+		// type and don't override the Object.equals method
+		//
+		// Makes a pairwise comparison ints[k].equals(copiedArray[k]) for each reference
+		// type if the elements aren't primitives
+		System.out.println("equals(): " + Arrays.equals(ints, copiedArray));
 	}
 
 	// worse case O(n^2), best case O(n)
