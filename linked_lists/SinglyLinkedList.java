@@ -1,6 +1,6 @@
 package linked_lists;
 
-public class SinglyLinkedList<E> {
+public class SinglyLinkedList<E> implements Cloneable {
 
 	private static class Node<E> {
 		private E element; // reference to the element stored at this node
@@ -112,6 +112,25 @@ public class SinglyLinkedList<E> {
 		return true;
 	}
 
+	public SinglyLinkedList<E> clone() throws CloneNotSupportedException {
+		SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone();
+
+		if (size > 0) {
+			other.head = new Node<>(head.getElement(), null);
+			Node<E> walk = head.getNext();
+			Node<E> otherTail = other.head;
+
+			while (walk != null) {
+				Node<E> newest = new Node<>(walk.getElement(), null);
+				otherTail.setNext(newest);
+				otherTail = newest;
+				walk = walk.getNext();
+			}
+		}
+
+		return other;
+	}
+
 	public static void main(String[] args) {
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 		for (int i = 0; i < 100; i++) {
@@ -124,6 +143,18 @@ public class SinglyLinkedList<E> {
 		}
 
 		System.out.println(list.equals(list2));
+
+		SinglyLinkedList<Integer> list2Clone = new SinglyLinkedList<>();
+
+		try {
+			list2Clone = list2.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+
+		list2Clone.removeFirst();
+
+		System.out.println(list2.equals(list2Clone));
 	}
 
 }
