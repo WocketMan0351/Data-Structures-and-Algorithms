@@ -81,7 +81,7 @@ public class Factorial_Fibonacci_Powers_Examples {
 	}
 
 	/**
-	 * Returns the nth number in the Fibonacci series
+	 * Returns the nth number in the Fibonacci series using binary recursion
 	 * 
 	 * Runs in O(2^n) time
 	 * 
@@ -99,6 +99,12 @@ public class Factorial_Fibonacci_Powers_Examples {
 		}
 	}
 
+	/**
+	 * Returns the nth number in the FIbonacci series using linear recursion
+	 * 
+	 * @param n an int
+	 * @return long[]
+	 */
 	public static long[] linearFib(int n) {
 		if (n <= 1) {
 			long[] answer = { n, 0 };
