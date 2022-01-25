@@ -18,9 +18,17 @@ public class RecursionWithArrays {
 		switch (option) {
 		case "1":
 			int[] numbers = { 1, 2, 3, 4, 5 };
-			System.out.println(Arrays.toString(numbers));
+			System.out.println(Arrays.toString(numbers) + "\n");
+
+			System.out.println("Recursive:");
 			reverseArray(numbers, 0, numbers.length - 1);
-			System.out.println(Arrays.toString(numbers));
+			System.out.println(Arrays.toString(numbers) + "\n");
+			reverseArray(numbers, 0, numbers.length - 1);
+
+			System.out.println("Iterative:");
+			reverseArrayIterative(numbers, 0, numbers.length - 1);
+			System.out.println(Arrays.toString(numbers) + "\n");
+
 			break;
 		case "2":
 			int[] arr = new int[1000];
@@ -31,7 +39,7 @@ public class RecursionWithArrays {
 			Scanner in = new Scanner(System.in);
 			System.out.print("Enter a target integer: ");
 			int target = in.nextInt();
-			System.out.println(target + " found: " + binarySearch(arr, target, 0, arr.length - 1) + "\n");
+			System.out.println(target + " found: " + binarySearch(arr, target) + "\n");
 			in.close();
 			break;
 		case "3":
@@ -49,6 +57,10 @@ public class RecursionWithArrays {
 	}
 
 	/**
+	 * Reverses an array recursively
+	 * 
+	 * Has tail recursion, as its recursive call is its last step. Can be easily
+	 * converted to be iterative, as shown in reverseArrayIterative()
 	 * 
 	 * @param arr  an int[]
 	 * @param low  an int
@@ -65,6 +77,35 @@ public class RecursionWithArrays {
 	}
 
 	/**
+	 * Reverses an array iteratively
+	 * 
+	 * @param arr  an int[]
+	 * @param low  an int
+	 * @param high an int
+	 * @return void
+	 */
+	public static void reverseArrayIterative(int[] arr, int low, int high) {
+		do {
+			int temp = arr[low];
+			arr[low] = arr[high];
+			arr[high] = temp;
+			low = low + 1;
+			high = high - 1;
+		} while (low < high);
+	}
+
+	/**
+	 * Public method with a cleaner interface for binarySearch
+	 * 
+	 * @param data
+	 * @param target
+	 * @return
+	 */
+	public static boolean binarySearch(int[] data, int target) {
+		return binarySearch(data, target, 0, data.length - 1);
+	}
+
+	/**
 	 * Binary search method that runs in O(log n) time for sorted arrays
 	 * 
 	 * Returns true if the given array contains the target
@@ -75,7 +116,7 @@ public class RecursionWithArrays {
 	 * @param high   an int
 	 * @return boolean
 	 */
-	public static boolean binarySearch(int[] data, int target, int low, int high) {
+	private static boolean binarySearch(int[] data, int target, int low, int high) {
 		if (low > high) {
 			return false;
 		} else {
@@ -93,6 +134,8 @@ public class RecursionWithArrays {
 	/**
 	 * Returns the sum of the first n integers of the given array
 	 * 
+	 * Runs in O(n) time and uses O(n) memory
+	 * 
 	 * Uses linear recursion
 	 * 
 	 * @param data an int[]
@@ -108,7 +151,9 @@ public class RecursionWithArrays {
 	}
 
 	/**
-	 * Returns the sum of the subarry data[low] through data[high] inclusive
+	 * Returns the sum of the sub array data[low] through data[high] inclusive
+	 * 
+	 * Runs in O(n) time and uses O(log n) memory
 	 * 
 	 * Uses binary recursion
 	 * 

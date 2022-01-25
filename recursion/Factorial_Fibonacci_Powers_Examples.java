@@ -1,14 +1,15 @@
 package recursion;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class RecursionExamples {
+public class Factorial_Fibonacci_Powers_Examples {
 
 	public static void main(String[] args) {
 		System.out.println("1) Factorial");
-		System.out.println("2) Fibonacci");
-		System.out.println("3) Power1 (less efficient)");
-		System.out.println("4) Power2 (more efficient)");
+		System.out.println("2) Binary Fibonacci");
+		System.out.println("3) Linear Fibonacci");
+		System.out.println("4) Power Methods");
 		System.out.print("\nChoose an option: ");
 
 		Scanner input = new Scanner(System.in);
@@ -31,22 +32,33 @@ public class RecursionExamples {
 				Scanner in = new Scanner(System.in);
 				System.out.print("Enter and integer: ");
 				int number = in.nextInt();
-				System.out.println(number + " fibonacci = " + fib(number));
+				System.out.println(number + " fibonacci = " + binaryFib(number));
 				in.close();
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			}
 			break;
 		case "3":
+			try {
+				Scanner in = new Scanner(System.in);
+				System.out.print("Enter an integer: ");
+				int number = in.nextInt();
+				System.out.println(number + " fibonacci = " + Arrays.toString(linearFib(number)));
+				in.close();
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			}
+			break;
+		case "4":
 			long before1 = System.nanoTime();
 			double answer1 = power1(2, 256);
 			long after1 = System.nanoTime();
-			System.out.println(answer1 + " took " + (after1 - before1) + "ns");
-		case "4":
+			System.out.println("O(n): " + answer1 + " took " + (after1 - before1) + "ns");
+
 			long before2 = System.nanoTime();
 			double answer2 = power2(2, 256);
 			long after2 = System.nanoTime();
-			System.out.println(answer2 + " took " + (after2 - before2) + "ns");
+			System.out.println("O(log n): " + answer2 + " took " + (after2 - before2) + "ns");
 			break;
 		default:
 			break;
@@ -71,26 +83,37 @@ public class RecursionExamples {
 	/**
 	 * Returns the nth number in the Fibonacci series
 	 * 
+	 * Runs in O(2^n) time
+	 * 
 	 * @param n an int
 	 * @return long
 	 */
-	public static long fib(int n) {
+	public static long binaryFib(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException();
 		}
 		if (n <= 2) {
 			return 1;
 		} else {
-			return fib(n - 1) + fib(n - 2);
+			return binaryFib(n - 1) + binaryFib(n - 2);
+		}
+	}
+
+	public static long[] linearFib(int n) {
+		if (n <= 1) {
+			long[] answer = { n, 0 };
+			return answer;
+		} else {
+			long[] temp = linearFib(n - 1);
+			long[] answer = { temp[0] + temp[1], temp[0] };
+			return answer;
 		}
 	}
 
 	/**
 	 * Returns a number x raised to the n power
 	 * 
-	 * Runs in O(n) time
-	 * 
-	 * Memory usage is O(n)
+	 * Runs in O(n) time and uses O(n) memory
 	 * 
 	 * @param x a double
 	 * @param n an int
@@ -107,9 +130,13 @@ public class RecursionExamples {
 	/**
 	 * Returns a number x raised to the n power
 	 * 
-	 * Runs in O(log n) time
+	 * Runs in O(log n) time and uses O(log n) memory
 	 * 
-	 * Memory usage is O(log n)
+	 * Each time we make a recursive call, we halve the value of n. The number of
+	 * times we can halve n while n > 1 is O(log n). Each individual invocation of
+	 * the method runs in constant time.
+	 * 
+	 * Therefore, the method is O(log n).
 	 * 
 	 * @param x a double
 	 * @param n an int
