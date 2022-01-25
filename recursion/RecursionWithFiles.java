@@ -3,7 +3,7 @@ package recursion;
 import java.io.File;
 import java.util.Scanner;
 
-public class Files {
+public class RecursionWithFiles {
 	public static int counter = 0;
 
 	public static void main(String[] args) {
