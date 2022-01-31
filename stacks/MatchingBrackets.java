@@ -7,6 +7,11 @@ public class MatchingBrackets {
 		System.out.println(isMatched(str));
 	}
 
+	/**
+	 * 
+	 * @param expression the string to be checked
+	 * @return true if the string's parenthesis and bracket pairs match up
+	 */
 	public static boolean isMatched(String expression) {
 		final String opening = "({[";
 		final String closing = ")}]";
@@ -25,7 +30,6 @@ public class MatchingBrackets {
 				}
 			}
 		}
-
 		return buffer.isEmpty();
 	}
 
