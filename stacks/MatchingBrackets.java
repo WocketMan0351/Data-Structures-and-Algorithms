@@ -1,5 +1,7 @@
 package stacks;
 
+import java.util.EmptyStackException;
+
 public class MatchingBrackets {
 
 	public static void main(String[] args) {
@@ -17,6 +19,14 @@ public class MatchingBrackets {
 		final String closing = ")}]";
 
 		Stack<Character> buffer = new LinkedStack<>();
+
+		// TESTS EMPTY STACK EXCEPTION
+		System.out.println("Testing empty stack exception...");
+		try {
+			System.out.println(buffer.top());
+		} catch (EmptyStackException e) {
+			e.printStackTrace();
+		}
 
 		for (char c : expression.toCharArray()) {
 			if (opening.indexOf(c) != -1) {

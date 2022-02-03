@@ -50,6 +50,7 @@ public class Factorial_Fibonacci_Powers_Examples {
 			}
 			break;
 		case "4":
+			System.out.println("\n2^256:");
 			long before1 = System.nanoTime();
 			double answer1 = power1(2, 256);
 			long after1 = System.nanoTime();
@@ -100,7 +101,7 @@ public class Factorial_Fibonacci_Powers_Examples {
 	}
 
 	/**
-	 * Returns the nth number in the FIbonacci series using linear recursion
+	 * Returns the nth number in the Fibonacci series using linear recursion
 	 * 
 	 * @param n an int
 	 * @return long[]

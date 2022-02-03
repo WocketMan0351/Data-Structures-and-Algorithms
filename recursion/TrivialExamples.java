@@ -3,7 +3,7 @@ package recursion;
 public class TrivialExamples {
 
 	public static void main(String[] args) {
-		System.out.println(count7(717));
+		System.out.println(count7(71777));
 		System.out.println(changePi("abcpixyz"));
 		System.out.println(endX("xXBelxla is aX cute dog Xx"));
 	}

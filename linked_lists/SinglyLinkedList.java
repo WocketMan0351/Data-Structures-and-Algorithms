@@ -1,5 +1,11 @@
 package linked_lists;
 
+/**
+ * A singly linked list. Keeps an explicit reference to the tail.
+ * 
+ * @author codyworthen
+ * @param <E>
+ */
 public class SinglyLinkedList<E> implements Cloneable {
 
 	private static class Node<E> {
