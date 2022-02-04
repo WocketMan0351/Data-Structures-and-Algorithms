@@ -3,12 +3,13 @@ package queues;
 /**
  * An array-based implementation of Queue. Memory usage is O(1) and time
  * complexity of all operations is O(1). Once instantiated, the size cannot be
- * changed.
+ * changed. Default size is 1,000 unless otherwise specified.
  * 
  * @author Cody Worthen
  * @param <E>
  */
 public class ArrayQueue<E> implements Queue<E> {
+
 	private E[] data; // generic array used for storage
 	private int front = 0; // index of the front element
 	private int elementCount = 0; // current number of elements
@@ -56,4 +57,5 @@ public class ArrayQueue<E> implements Queue<E> {
 		elementCount--;
 		return elementToDequeue;
 	}
+
 }

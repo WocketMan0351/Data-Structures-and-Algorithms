@@ -5,11 +5,13 @@ import java.util.EmptyStackException;
 /**
  * An array-based implementation of a stack. Memory is O(n) and time complexity
  * of all operations is O(1). Once instantiated, the size cannot be changed.
+ * Default size is 1,000 unless otherwise specified.
  * 
  * @author Cody Worthen
  * @param <E>
  */
 public class ArrayStack<E> implements Stack<E> {
+
 	public static final int CAPACITY = 1000;
 	private E[] data;
 	private int t = -1;
@@ -53,4 +55,5 @@ public class ArrayStack<E> implements Stack<E> {
 		t--;
 		return element;
 	}
+
 }

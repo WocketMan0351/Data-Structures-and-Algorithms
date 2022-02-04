@@ -8,7 +8,7 @@ package linked_lists;
  */
 public class SinglyLinkedList<E> implements Cloneable {
 
-	private static class Node<E> {
+	public static class Node<E> {
 		private E element; // reference to the element stored at this node
 		private Node<E> next; // reference to next node in the list
 

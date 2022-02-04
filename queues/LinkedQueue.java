@@ -5,13 +5,15 @@ import linked_lists.SinglyLinkedList;
 /**
  * A SinglyLinkedList implementation of a queue. Memory usage is O(n) and all
  * operations have a time complexity of O(1). The size can grow or shrink
- * depending how large the queue is.
+ * depending how large the queue is. Uses more space than a properly sized
+ * array-based queue.
  * 
  * 
  * @author Cody Worthen
  * @param <E>
  */
 public class LinkedQueue<E> implements Queue<E> {
+
 	private SinglyLinkedList<E> list = new SinglyLinkedList<>();
 
 	public LinkedQueue() {
