@@ -2,6 +2,13 @@ package queues;
 
 import linked_lists.CircularlyLinkedList;
 
+/**
+ * A CircularlyLinkedList implementation of a queue. Memory usage is O(n) and
+ * all operations are O(1).
+ * 
+ * @author Cody Worthen
+ * @param <E>
+ */
 public class LinkedCircularQueue<E> implements CircularQueue<E> {
 
 	private CircularlyLinkedList<E> list = new CircularlyLinkedList<>();
