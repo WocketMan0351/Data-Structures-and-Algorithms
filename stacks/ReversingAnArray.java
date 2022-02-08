@@ -13,6 +13,7 @@ public class ReversingAnArray {
 	}
 
 	/**
+	 * Reverses an array of any type using a stack
 	 * 
 	 * @param arr the array to be reversed
 	 * @return void
