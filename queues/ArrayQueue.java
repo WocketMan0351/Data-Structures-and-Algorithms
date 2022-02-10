@@ -12,7 +12,7 @@ public class ArrayQueue<E> implements Queue<E> {
 
 	private E[] data; // generic array used for storage
 	private int front = 0; // index of the front element
-	private int elementCount = 0; // current number of elements
+	private int size = 0; // current number of elements
 	public static final int CAPACITY = 1000; // default array capacity
 
 	public ArrayQueue() {
@@ -24,20 +24,20 @@ public class ArrayQueue<E> implements Queue<E> {
 	}
 
 	public int size() {
-		return elementCount;
+		return size;
 	}
 
 	public boolean isEmpty() {
-		return elementCount == 0;
+		return size == 0;
 	}
 
 	public void enqueue(E element) {
-		if (elementCount == data.length) {
+		if (size == data.length) {
 			throw new IllegalStateException("Queue is full");
 		}
-		int available = (front + elementCount) % data.length;
+		int available = (front + size) % data.length;
 		data[available] = element;
-		elementCount++;
+		size++;
 	}
 
 	public E first() {
@@ -54,7 +54,7 @@ public class ArrayQueue<E> implements Queue<E> {
 		E elementToDequeue = data[front];
 		data[front] = null;
 		front = (front + 1) % data.length;
-		elementCount--;
+		size--;
 		return elementToDequeue;
 	}
 

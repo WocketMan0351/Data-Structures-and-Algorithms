@@ -5,11 +5,12 @@ import java.util.EmptyStackException;
 public class MatchingBrackets {
 
 	public static void main(String[] args) {
-		String str = "())";
+		String str = "{()}";
 		System.out.println(isMatched(str));
 	}
 
 	/**
+	 * Checks whether a string has matching opening and closing brackets ({[]})
 	 * 
 	 * @param expression the string to be checked
 	 * @return true if the string's parenthesis and bracket pairs match up

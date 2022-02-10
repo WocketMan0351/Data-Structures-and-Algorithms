@@ -8,7 +8,8 @@ import linked_lists.SinglyLinkedList;
  * A SinglyLinkedList implementation of a stack. Memory usage is O(n) and all
  * operations have a time complexity of O(1). The size can grow or shrink
  * depending how large the stack is. Uses more space than a properly sized
- * array-based stack.
+ * array-based stack. Uses the Adaptor Pattern to adapt a SinglyLinkedList to
+ * work as a stack.
  * 
  * @author Cody Worthen
  * @param <E>

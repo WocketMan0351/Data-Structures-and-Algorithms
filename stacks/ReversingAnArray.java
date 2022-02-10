@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ReversingAnArray {
 
 	public static void main(String[] args) {
-		Integer[] numbers = { 1, 3, 5, 7, 9, 11 }; // autoboxing
+		Integer[] numbers = { 1, 3, 5, 7, 9, 11 }; // autoboxing (boxing primitive into an Object)
 
 		System.out.println(Arrays.toString(numbers));
 		reverse(numbers);
