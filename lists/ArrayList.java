@@ -1,6 +1,35 @@
 package lists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class ArrayList<E> implements List<E> {
+
+	// this can only be accesses by an instance method of ArrayList<E>
+	private class ArrayIterator implements Iterator<E> {
+		private int j = 0;
+		private boolean removable = false;
+
+		public boolean hasNext() {
+			return j < size;
+		}
+
+		public E next() throws NoSuchElementException {
+			if (j == size) {
+				throw new NoSuchElementException("No next element");
+			}
+			removable = true;
+			return data[j++];
+		}
+
+		public void remove() throws IllegalStateException {
+			if (!removable)
+				throw new IllegalStateException("Nothing to remove");
+			ArrayList.this.remove(j - 1);
+			j--;
+			removable = false;
+		}
+	}
 
 	public static final int CAPACITY = 16;
 	private E[] data;
@@ -35,7 +64,7 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	public void add(int i, E element) throws IndexOutOfBoundsException {
-		checkIndex(i, size);
+		checkIndex(i, size + 1);
 		if (size == data.length) {
 			resize(2 * data.length);
 		}
@@ -69,6 +98,28 @@ public class ArrayList<E> implements List<E> {
 			temp[i] = data[i];
 		}
 		data = temp;
+	}
+
+	public Iterator<E> iterator() {
+		return new ArrayIterator();
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		Iterator<E> walk = this.iterator();
+		while (walk.hasNext()) {
+			sb.append(walk.next() + " ");
+		}
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Integer> numbers = new ArrayList<>();
+		numbers.add(0, 11);
+		numbers.add(1, 12);
+		numbers.add(2, 13);
+
+		System.out.println(numbers.toString());
 	}
 
 }
