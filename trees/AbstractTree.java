@@ -2,19 +2,15 @@ package trees;
 
 public abstract class AbstractTree<E> implements Tree<E> {
 
-	public int numChildren(Position<E> p) throws IllegalArgumentException {
-		return 0;
-	}
-
-	public boolean isInternal(Position<E> p) throws IllegalArgumentException {
+	public boolean isInternal(Position<E> p) {
 		return numChildren(p) > 0;
 	}
 
-	public boolean isExternal(Position<E> p) throws IllegalArgumentException {
+	public boolean isExternal(Position<E> p) {
 		return numChildren(p) == 0;
 	}
 
-	public boolean isRoot(Position<E> p) throws IllegalArgumentException {
+	public boolean isRoot(Position<E> p) {
 		return p == root();
 	}
 
@@ -42,7 +38,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 	}
 
 	// O(n)
-	public int height(Position<E> p) {
+	public int height(Position<E> p) { // pass the root as p
 		int height = 0; // if p is external
 		for (Position<E> child : children(p)) {
 			height = Math.max(height, 1 + height(child));

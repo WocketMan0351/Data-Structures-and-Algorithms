@@ -31,6 +31,11 @@ public class ArrayList<E> implements List<E> {
 		}
 	}
 
+	// creates a new ArrayIterator
+	public Iterator<E> iterator() {
+		return new ArrayIterator();
+	}
+
 	public static final int CAPACITY = 16;
 	private E[] data;
 	private int size = 0;
@@ -98,10 +103,6 @@ public class ArrayList<E> implements List<E> {
 			temp[i] = data[i];
 		}
 		data = temp;
-	}
-
-	public Iterator<E> iterator() {
-		return new ArrayIterator();
 	}
 
 	public String toString() {

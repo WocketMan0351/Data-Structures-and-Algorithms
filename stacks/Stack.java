@@ -18,7 +18,7 @@ public interface Stack<E> {
 	/**
 	 * Inserts an element at the top of the stack
 	 * 
-	 * @param E element
+	 * @param element E
 	 * @return void
 	 */
 	void push(E element);
@@ -26,14 +26,14 @@ public interface Stack<E> {
 	/**
 	 * Returns but does not remove, the top element from the stack
 	 * 
-	 * @return E element
+	 * @return E
 	 */
 	E top();
 
 	/**
 	 * Removes and returns the top element from the stack
 	 * 
-	 * @return E element
+	 * @return E
 	 */
 	E pop();
 }

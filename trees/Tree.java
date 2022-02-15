@@ -4,14 +4,14 @@ import java.util.Iterator;
 
 public interface Tree<E> extends Iterable<E> {
 	/**
-	 * Returns the Position of the root of the tree
+	 * Returns the Position of the root of the tree (null if empty)
 	 * 
 	 * @return
 	 */
 	Position<E> root();
 
 	/**
-	 * Returns the position of the parent of p (null if p is the root)
+	 * Returns the Position of the parent of Position p (null if p is the root)
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -20,7 +20,8 @@ public interface Tree<E> extends Iterable<E> {
 	Position<E> parent(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns an iterable collection containing the children of p (null if empty)
+	 * Returns an Iterable collection containing the children of Position p (null if
+	 * none)
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -29,7 +30,7 @@ public interface Tree<E> extends Iterable<E> {
 	Iterable<Position<E>> children(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns the number of children of p
+	 * Returns the number of children of Position p
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -38,7 +39,7 @@ public interface Tree<E> extends Iterable<E> {
 	int numChildren(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if p has at least one child
+	 * Returns true if Position p has at least one child
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
@@ -47,7 +48,7 @@ public interface Tree<E> extends Iterable<E> {
 	boolean isInternal(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if p doesn't have any children
+	 * Returns true if Position p does not have any children
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
@@ -56,7 +57,7 @@ public interface Tree<E> extends Iterable<E> {
 	boolean isExternal(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if position p is the root of the tree
+	 * Returns true if Position p is the root of the tree
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
