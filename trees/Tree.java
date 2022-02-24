@@ -4,14 +4,14 @@ import java.util.Iterator;
 
 public interface Tree<E> extends Iterable<E> {
 	/**
-	 * Returns the Position of the root of the tree (null if empty)
+	 * Returns the Position of the root of the tree (null if empty).
 	 * 
 	 * @return
 	 */
 	Position<E> root();
 
 	/**
-	 * Returns the Position of the parent of Position p (null if p is the root)
+	 * Returns the Position of the parent of Position p (null if p is the root).
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -21,7 +21,7 @@ public interface Tree<E> extends Iterable<E> {
 
 	/**
 	 * Returns an Iterable collection containing the children of Position p (null if
-	 * none)
+	 * none).
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -30,7 +30,7 @@ public interface Tree<E> extends Iterable<E> {
 	Iterable<Position<E>> children(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns the number of children of Position p
+	 * Returns the number of children of Position p.
 	 * 
 	 * @param p Position<E>
 	 * @return Position<E>
@@ -39,7 +39,7 @@ public interface Tree<E> extends Iterable<E> {
 	int numChildren(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if Position p has at least one child
+	 * Returns true if Position p has at least one child.
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
@@ -48,7 +48,7 @@ public interface Tree<E> extends Iterable<E> {
 	boolean isInternal(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if Position p does not have any children
+	 * Returns true if Position p does not have any children.
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
@@ -57,7 +57,7 @@ public interface Tree<E> extends Iterable<E> {
 	boolean isExternal(Position<E> p) throws IllegalArgumentException;
 
 	/**
-	 * Returns true if Position p is the root of the tree
+	 * Returns true if Position p is the root of the tree.
 	 * 
 	 * @param p Position<E>
 	 * @return boolean
@@ -67,7 +67,7 @@ public interface Tree<E> extends Iterable<E> {
 
 	/**
 	 * Returns the number of position (and hence elements) that are contained in the
-	 * tree
+	 * tree.
 	 * 
 	 * @return int
 	 */
@@ -75,7 +75,7 @@ public interface Tree<E> extends Iterable<E> {
 
 	/**
 	 * Returns true if the tree does not contain any positions (and thus no
-	 * elements)
+	 * elements).
 	 * 
 	 * @return boolean
 	 */
@@ -83,14 +83,14 @@ public interface Tree<E> extends Iterable<E> {
 
 	/**
 	 * Returns an Iterator for all elements in the tree (so that the tree itself is
-	 * Iterable)
+	 * Iterable).
 	 * 
 	 * @return Iterator<E>
 	 */
 	Iterator<E> iterator();
 
 	/**
-	 * Returns an Iterable collection of all positions of the tree
+	 * Returns an Iterable collection of all positions of the tree.
 	 * 
 	 * @return Iterable<Position<E>>
 	 */
