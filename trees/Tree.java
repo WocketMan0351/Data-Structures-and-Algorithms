@@ -2,6 +2,9 @@ package trees;
 
 import java.util.Iterator;
 
+/**
+ * Interface for the tree ADT.
+ */
 public interface Tree<E> extends Iterable<E> {
 	/**
 	 * Returns the Position of the root of the tree (null if empty).

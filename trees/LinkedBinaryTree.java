@@ -1,7 +1,5 @@
 package trees;
 
-import java.util.Iterator;
-
 public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
 	protected static class Node<E> implements Position<E> {
@@ -234,18 +232,6 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 			throw new IllegalArgumentException("p is no longer in the tree");
 		}
 		return node;
-	}
-
-	@Override
-	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Iterable<Position<E>> positions() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
