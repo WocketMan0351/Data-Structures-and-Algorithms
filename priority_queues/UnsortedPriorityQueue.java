@@ -7,7 +7,8 @@ import lists.Position;
 import lists.PositionalList;
 
 /**
- * An implementation of a priority queue with an unsorted list.
+ * An implementation of a priority queue with an unsorted list. Insertion is
+ * O(1), finding/removal is O(n), sorting is O(n^2), for n elements.
  */
 public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 
@@ -34,9 +35,6 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 		return small;
 	}
 
-	/**
-	 * Insets a key-value pair and returns the entry created.
-	 */
 	public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
 		checkKey(key);
 		Entry<K, V> newest = new PQEntry(key, value);
@@ -44,9 +42,6 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 		return newest;
 	}
 
-	/**
-	 * Returns, but does not remove, an entry with minimal key.
-	 */
 	public Entry<K, V> min() {
 		if (list.isEmpty()) {
 			return null;
@@ -54,9 +49,6 @@ public class UnsortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 		return findMin().getElement();
 	}
 
-	/**
-	 * Removes and returns an entry with minimal key.
-	 */
 	public Entry<K, V> removeMin() {
 		if (list.isEmpty()) {
 			return null;

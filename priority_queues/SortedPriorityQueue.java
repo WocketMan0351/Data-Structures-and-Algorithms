@@ -7,7 +7,8 @@ import lists.Position;
 import lists.PositionalList;
 
 /**
- * An implementation of a priority queue with a sorted list.
+ * An implementation of a priority queue with a sorted list. Inserting is O(n),
+ * finding/removal is O(1), sorting is O(n^2), for n elements.
  */
 public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 

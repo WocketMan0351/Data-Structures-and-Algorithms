@@ -78,11 +78,6 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
 		}
 	}
 
-	/**
-	 * Tests whether the priority queue is empty.
-	 * 
-	 * @return boolean
-	 */
 	public boolean isEmpty() {
 		return size() == 0;
 	}
