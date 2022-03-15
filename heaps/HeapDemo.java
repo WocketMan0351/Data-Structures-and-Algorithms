@@ -22,13 +22,14 @@ public class HeapDemo {
 		while (!q.isEmpty()) {
 			System.out.println(q.removeMin().getValue());
 		}
-
 		System.out.println();
 
-		try {
+		Integer[] keys = { 2, 9, 6, 5, 7 };
+		String[] values = { "Sue2", "Jeff", "Mark", "Pat", "Anna" };
+		PriorityQueue<Integer, String> q2 = new HeapPriorityQueue<>(keys, values);
 
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+		while (!q2.isEmpty()) {
+			System.out.println(q2.removeMin().getValue());
 		}
 	}
 

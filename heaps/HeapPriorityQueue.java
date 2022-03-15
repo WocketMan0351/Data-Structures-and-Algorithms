@@ -166,12 +166,12 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 
 	/**
 	 * Sorts sequence S, using initially empty priority queue P to produce the
-	 * order.
+	 * order. Runs in O(n^2) time.
 	 * 
 	 * @param S PositionalList
 	 * @param P PriorityQueue
 	 */
-	public static <E> void pgSort(PositionalList<E> S, PriorityQueue<E, ?> P) {
+	public static <E> void pqSort(PositionalList<E> S, PriorityQueue<E, ?> P) {
 		int n = S.size();
 		for (int i = 0; i < n; i++) {
 			E element = S.remove(S.first());
