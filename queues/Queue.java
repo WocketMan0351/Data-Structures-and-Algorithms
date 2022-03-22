@@ -17,7 +17,7 @@ public interface Queue<E> {
 	int size();
 
 	/**
-	 * Tests whether the queue is empty
+	 * Returns a boolean indicating whether the Queue is empty.
 	 * 
 	 * @return boolean
 	 */
