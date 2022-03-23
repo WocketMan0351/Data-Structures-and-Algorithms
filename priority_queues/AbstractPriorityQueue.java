@@ -64,15 +64,15 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
 	}
 
 	/**
-	 * Determines whether a key is valid.
+	 * Determines whether key k is valid.
 	 * 
 	 * @param key
 	 * @return boolean
 	 * @throws IllegalArgumentException
 	 */
-	protected boolean checkKey(K key) throws IllegalArgumentException {
+	protected boolean checkKey(K k) throws IllegalArgumentException {
 		try {
-			return (comp.compare(key, key) == 0); // see if key can be compared to itself
+			return (comp.compare(k, k) == 0); // see if key can be compared to itself
 		} catch (ClassCastException e) {
 			throw new IllegalArgumentException("Incompatible key");
 		}

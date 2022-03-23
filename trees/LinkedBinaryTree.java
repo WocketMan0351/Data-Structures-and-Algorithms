@@ -82,23 +82,23 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	}
 
 	/**
-	 * Places element at the root of an empty tree and returns its new position
+	 * Places element e the root of an empty tree and returns its new position.
 	 * 
 	 * @param element E
 	 * @return Position<E>
 	 * @throws IllegalStateException
 	 */
-	public Position<E> addRoot(E element) throws IllegalStateException {
+	public Position<E> addRoot(E e) throws IllegalStateException {
 		if (!isEmpty()) {
 			throw new IllegalStateException("Tree is not empty");
 		}
-		root = createNode(element, null, null, null);
+		root = createNode(e, null, null, null);
 		size = 1;
 		return root;
 	}
 
 	/**
-	 * Creates a new left child of Position p and stores element. Returns its
+	 * Creates a new left child of Position p and stores element e. Returns its
 	 * position.
 	 * 
 	 * @param p       Position<E>
@@ -106,19 +106,19 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	 * @return Position<E>
 	 * @throws IllegalArgumentException
 	 */
-	public Position<E> addLeftChild(Position<E> p, E element) throws IllegalArgumentException {
+	public Position<E> addLeftChild(Position<E> p, E e) throws IllegalArgumentException {
 		Node<E> parent = validate(p);
 		if (parent.getLeftChild() != null) {
 			throw new IllegalArgumentException("p already has a left child");
 		}
-		Node<E> child = createNode(element, parent, null, null);
+		Node<E> child = createNode(e, parent, null, null);
 		parent.setLeftChild(child);
 		size++;
 		return child;
 	}
 
 	/**
-	 * Creates a new right child of Position p and stores element. Returns its
+	 * Creates a new right child of Position p and stores element e. Returns its
 	 * position.
 	 * 
 	 * @param p       Position<E>
@@ -126,19 +126,19 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	 * @return Position<E>
 	 * @throws IllegalArgumentException
 	 */
-	public Position<E> addRightChild(Position<E> p, E element) throws IllegalArgumentException {
+	public Position<E> addRightChild(Position<E> p, E e) throws IllegalArgumentException {
 		Node<E> parent = validate(p);
 		if (parent.getRightChild() != null) {
 			throw new IllegalArgumentException("p aleady has a right child");
 		}
-		Node<E> child = createNode(element, parent, null, null);
+		Node<E> child = createNode(e, parent, null, null);
 		parent.setRightChild(child);
 		size++;
 		return child;
 	}
 
 	/**
-	 * Replaces the element at Position p with element. Returns the replaced
+	 * Replaces the element at Position p with element e. Returns the replaced
 	 * element.
 	 * 
 	 * @param p       Position<E>
@@ -146,10 +146,10 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	 * @return element E
 	 * @throws IllegalArgumentException
 	 */
-	public E set(Position<E> p, E element) throws IllegalArgumentException {
+	public E set(Position<E> p, E e) throws IllegalArgumentException {
 		Node<E> node = validate(p);
 		E temp = node.getElement();
-		node.setElement(element);
+		node.setElement(e);
 		return temp;
 	}
 
@@ -217,7 +217,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	}
 
 	/**
-	 * Validates the position and returns it as a Node
+	 * Validates position p and returns it as a Node
 	 * 
 	 * @param p Position<E>
 	 * @return Node<E>

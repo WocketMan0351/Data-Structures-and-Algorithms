@@ -29,8 +29,8 @@ public class LinkedStack<E> implements Stack<E> {
 		return list.isEmpty();
 	}
 
-	public void push(E element) {
-		list.addFirst(element);
+	public void push(E e) {
+		list.addFirst(e);
 	}
 
 	public E top() {

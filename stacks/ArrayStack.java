@@ -32,11 +32,11 @@ public class ArrayStack<E> implements Stack<E> {
 		return t == -1;
 	}
 
-	public void push(E element) {
+	public void push(E e) {
 		if (size() == data.length) {
 			throw new IllegalStateException("Stack is full");
 		}
-		data[++t] = element; // increments t before the expression is evaluated
+		data[++t] = e; // increments t before the expression is evaluated
 	}
 
 	public E top() {

@@ -9,52 +9,52 @@ package queues;
  */
 public interface Deque<E> {
 	/**
-	 * Returns the number of elements in the deque
+	 * Returns the number of elements in the deque.
 	 */
 	int size();
 
 	/**
-	 * Tests whether the deque is empty
+	 * Tests whether the deque is empty.
 	 */
 	boolean isEmpty();
 
 	/**
-	 * Returns, but does not remove, the first element of the deque (null if empty)
+	 * Returns, but does not remove, the first element of the deque (null if empty).
 	 * 
 	 * @return E element
 	 */
 	E first();
 
 	/**
-	 * Returns, but does not remove, the last element of the deque (null if empty)
+	 * Returns, but does not remove, the last element of the deque (null if empty).
 	 * 
 	 * @return
 	 */
 	E last();
 
 	/**
-	 * Inserts an element at the front of the deque
+	 * Inserts element e at the front of the deque.
 	 * 
 	 * @param E element
 	 */
-	void addFirst(E element);
+	void addFirst(E e);
 
 	/**
-	 * Inserts an element at the back of the deque
+	 * Inserts element e at the back of the deque.
 	 * 
 	 * @param element
 	 */
-	void addLast(E element);
+	void addLast(E e);
 
 	/**
-	 * Removes and returns the first element in the deque (null if empty)
+	 * Removes and returns the first element in the deque (null if empty).
 	 * 
 	 * @return E element
 	 */
 	E removeFirst();
 
 	/**
-	 * Removes and returns the last element of the deque (null if empty)
+	 * Removes and returns the last element of the deque (null if empty).
 	 * 
 	 * @return E element
 	 */

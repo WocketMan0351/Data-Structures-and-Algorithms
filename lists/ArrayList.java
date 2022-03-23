@@ -61,14 +61,14 @@ public class ArrayList<E> implements List<E> {
 		return data[i];
 	}
 
-	public E set(int i, E element) throws IndexOutOfBoundsException {
+	public E set(int i, E e) throws IndexOutOfBoundsException {
 		checkIndex(i, size);
 		E temp = data[i];
-		data[i] = element;
+		data[i] = e;
 		return temp;
 	}
 
-	public void add(int i, E element) throws IndexOutOfBoundsException {
+	public void add(int i, E e) throws IndexOutOfBoundsException {
 		checkIndex(i, size + 1);
 		if (size == data.length) {
 			resize(2 * data.length);
@@ -76,7 +76,7 @@ public class ArrayList<E> implements List<E> {
 		for (int k = size - 1; k >= i; k--) {
 			data[k + 1] = data[k];
 		}
-		data[i] = element;
+		data[i] = e;
 		size++;
 	}
 

@@ -27,8 +27,8 @@ public class LinkedQueue<E> implements Queue<E> {
 		return list.isEmpty();
 	}
 
-	public void enqueue(E element) {
-		list.addLast(element);
+	public void enqueue(E e) {
+		list.addLast(e);
 	}
 
 	public E first() {

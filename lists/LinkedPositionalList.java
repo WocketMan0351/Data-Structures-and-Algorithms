@@ -142,13 +142,13 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 		return position(trailer.getPrev());
 	}
 
-	public Position<E> before(Position<E> position) throws IllegalArgumentException {
-		Node<E> node = validate(position);
+	public Position<E> before(Position<E> p) throws IllegalArgumentException {
+		Node<E> node = validate(p);
 		return position(node.getPrev());
 	}
 
-	public Position<E> after(Position<E> position) throws IllegalArgumentException {
-		Node<E> node = validate(position);
+	public Position<E> after(Position<E> p) throws IllegalArgumentException {
+		Node<E> node = validate(p);
 		return position(node.getNext());
 	}
 
@@ -160,33 +160,33 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 		return newest;
 	}
 
-	public Position<E> addFirst(E element) {
-		return addBetween(element, header, header.getNext());
+	public Position<E> addFirst(E e) {
+		return addBetween(e, header, header.getNext());
 	}
 
-	public Position<E> addLast(E element) {
-		return addBetween(element, trailer.getPrev(), trailer);
+	public Position<E> addLast(E e) {
+		return addBetween(e, trailer.getPrev(), trailer);
 	}
 
-	public Position<E> addBefore(Position<E> position, E element) throws IllegalArgumentException {
-		Node<E> node = validate(position);
-		return addBetween(element, node.getPrev(), node.getNext());
+	public Position<E> addBefore(Position<E> p, E e) throws IllegalArgumentException {
+		Node<E> node = validate(p);
+		return addBetween(e, node.getPrev(), node.getNext());
 	}
 
-	public Position<E> addAfter(Position<E> position, E element) throws IllegalArgumentException {
-		Node<E> node = validate(position);
-		return addBetween(element, node, node.getNext());
+	public Position<E> addAfter(Position<E> p, E e) throws IllegalArgumentException {
+		Node<E> node = validate(p);
+		return addBetween(e, node, node.getNext());
 	}
 
-	public E set(Position<E> position, E element) throws IllegalArgumentException {
-		Node<E> node = validate(position);
+	public E set(Position<E> p, E e) throws IllegalArgumentException {
+		Node<E> node = validate(p);
 		E elementToReplace = node.getElement();
-		node.setElement(element);
+		node.setElement(e);
 		return elementToReplace;
 	}
 
-	public E remove(Position<E> position) throws IllegalArgumentException {
-		Node<E> node = validate(position);
+	public E remove(Position<E> p) throws IllegalArgumentException {
+		Node<E> node = validate(p);
 		Node<E> predecessor = node.getPrev();
 		Node<E> successor = node.getNext();
 		predecessor.setNext(successor);
@@ -200,11 +200,11 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 	}
 
 	// validates the position and returns it as a node
-	private Node<E> validate(Position<E> position) throws IllegalArgumentException {
-		if (!(position instanceof Node)) {
+	private Node<E> validate(Position<E> p) throws IllegalArgumentException {
+		if (!(p instanceof Node)) {
 			throw new IllegalArgumentException("Invalid p");
 		}
-		Node<E> node = (Node<E>) position;
+		Node<E> node = (Node<E>) p;
 		if (node.getNext() == null) {
 			throw new IllegalArgumentException("p is no longer in the list");
 		}

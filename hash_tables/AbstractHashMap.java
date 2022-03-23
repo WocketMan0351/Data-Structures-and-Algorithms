@@ -33,16 +33,16 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 		return n;
 	}
 
-	public V get(K key) {
-		return bucketGet(hashValue(key), key);
+	public V get(K k) {
+		return bucketGet(hashValue(k), k);
 	}
 
-	public V remove(K key) {
-		return bucketRemove(hashValue(key), key);
+	public V remove(K k) {
+		return bucketRemove(hashValue(k), k);
 	}
 
-	public V put(K key, V value) {
-		V elementToAdd = bucketPut(hashValue(key), key, value);
+	public V put(K k, V v) {
+		V elementToAdd = bucketPut(hashValue(k), k, v);
 		if (n > capacity / 2) {
 			resize(2 * capacity - 1);
 		}
@@ -50,8 +50,8 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 	}
 
 	// private utilities
-	private int hashValue(K key) {
-		return (int) ((Math.abs(key.hashCode() * scale + shift) % prime) % capacity);
+	private int hashValue(K k) {
+		return (int) ((Math.abs(k.hashCode() * scale + shift) % prime) % capacity);
 	}
 
 	private void resize(int newCapacity) {
@@ -70,9 +70,9 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 	// protected absract methods to be implemented by subclasses
 	protected abstract void createTable();
 
-	protected abstract V bucketGet(int hash, K key);
+	protected abstract V bucketGet(int h, K k);
 
-	protected abstract V bucketPut(int hash, K key, V value);
+	protected abstract V bucketPut(int h, K k, V v);
 
-	protected abstract V bucketRemove(int hash, K key);
+	protected abstract V bucketRemove(int h, K k);
 }

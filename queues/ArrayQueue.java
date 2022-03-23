@@ -31,12 +31,12 @@ public class ArrayQueue<E> implements Queue<E> {
 		return size == 0;
 	}
 
-	public void enqueue(E element) {
+	public void enqueue(E e) {
 		if (size == data.length) {
 			throw new IllegalStateException("Queue is full");
 		}
 		int available = (front + size) % data.length;
-		data[available] = element;
+		data[available] = e;
 		size++;
 	}
 

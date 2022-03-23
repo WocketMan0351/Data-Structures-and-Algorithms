@@ -24,7 +24,7 @@ public interface Map<K, V> {
 	 * @param key
 	 * @return value
 	 */
-	V get(K key);
+	V get(K k);
 
 	/**
 	 * If the Map does not have an entry with key equal to k, adds the entry (k, v)
@@ -35,7 +35,7 @@ public interface Map<K, V> {
 	 * @param v
 	 * @return value
 	 */
-	V put(K key, V value);
+	V put(K k, V v);
 
 	/**
 	 * Removes from the map the entry with key equal to k, and returns its value; if
@@ -44,7 +44,7 @@ public interface Map<K, V> {
 	 * @param k
 	 * @return value
 	 */
-	V remove(K key);
+	V remove(K k);
 
 	/**
 	 * Returns an iterable collection containing all the keys stored in the Map.
@@ -55,7 +55,7 @@ public interface Map<K, V> {
 
 	/**
 	 * Returns an iterable collection containing all the values of entries stored in
-	 * the Map (with repetition if multiple keys map to the same value). *
+	 * the Map (with repetition if multiple keys map to the same value).
 	 * 
 	 * @return Iterable
 	 */

@@ -61,10 +61,16 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 		return new KeyIterable();
 	}
 
-	public boolean containsKey(K key) {
+	/**
+	 * Checks whether the keyset contains key k.
+	 * 
+	 * @param k
+	 * @return
+	 */
+	public boolean containsKey(K k) {
 		Iterable<K> keySet = new KeyIterable();
-		for (K k : keySet) {
-			if (k.equals(key)) {
+		for (K key : keySet) {
+			if (key.equals(k)) {
 				return true;
 			}
 		}

@@ -43,15 +43,15 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	}
 
 	/**
-	 * Returns the index of an entry with an equal key, or -1 if none is found.
+	 * Returns the index of an entry with key k, or -1 if none is found.
 	 * 
 	 * @param key
 	 * @return
 	 */
-	private int findIndex(K key) {
+	private int findIndex(K k) {
 		int n = table.size();
 		for (int i = 0; i < n; i++) {
-			if (table.get(i).getKey().equals(key)) {
+			if (table.get(i).getKey().equals(k)) {
 				return i;
 			}
 		}
@@ -62,26 +62,26 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 		return table.size();
 	}
 
-	public V get(K key) {
-		int i = findIndex(key);
+	public V get(K k) {
+		int i = findIndex(k);
 		if (i == -1) {
 			return null;
 		}
 		return table.get(i).getValue();
 	}
 
-	public V put(K key, V value) {
-		int i = findIndex(key);
+	public V put(K k, V v) {
+		int i = findIndex(k);
 		if (i == -1) {
-			table.add(new MapEntry<>(key, value));
+			table.add(new MapEntry<>(k, v));
 			return null;
 		} else {
-			return table.get(i).setValue(value);
+			return table.get(i).setValue(v);
 		}
 	}
 
-	public V remove(K key) {
-		int i = findIndex(key);
+	public V remove(K k) {
+		int i = findIndex(k);
 		int n = size();
 		if (i == -1) { // key not found
 			return null;

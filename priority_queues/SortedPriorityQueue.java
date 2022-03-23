@@ -22,9 +22,9 @@ public class SortedPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 		super(comp);
 	}
 
-	public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
-		checkKey(key);
-		Entry<K, V> newest = new PQEntry<>(key, value);
+	public Entry<K, V> insert(K k, V v) throws IllegalArgumentException {
+		checkKey(k);
+		Entry<K, V> newest = new PQEntry<>(k, v);
 		Position<Entry<K, V>> walk = list.last();
 		while (walk != null && compare(newest, walk.getElement()) < 0) {
 			walk = list.before(walk);

@@ -10,7 +10,7 @@ package queues;
  */
 public interface Queue<E> {
 	/**
-	 * Returns the number of elements in the queue
+	 * Returns the number of elements in the queue.
 	 * 
 	 * @return int
 	 */
@@ -24,22 +24,22 @@ public interface Queue<E> {
 	boolean isEmpty();
 
 	/**
-	 * Inserts an element at the rear of the queue
+	 * Inserts element e at the rear of the queue.
 	 * 
 	 * @param E element
 	 * @return void
 	 */
-	void enqueue(E element);
+	void enqueue(E e);
 
 	/**
-	 * Returns, but does not remove, the first element (null if empty)
+	 * Returns, but does not remove, the first element (null if empty).
 	 * 
 	 * @return E element
 	 */
 	E first();
 
 	/**
-	 * Removes and returns the first element of the queue (null if empty)
+	 * Removes and returns the first element of the queue (null if empty).
 	 * 
 	 * @return E element
 	 */

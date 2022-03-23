@@ -7,21 +7,21 @@ package lists;
  */
 public interface List<E> {
 	/**
-	 * Returns the number of elements in the list
+	 * Returns the number of elements in the list.
 	 * 
 	 * @return int
 	 */
 	int size();
 
 	/**
-	 * Checks whether the list is empty
+	 * Checks whether the list is empty.
 	 * 
 	 * @return
 	 */
 	boolean isEmpty();
 
 	/**
-	 * Returns, but does not remove, the element at index i
+	 * Returns, but does not remove, the element at index i.
 	 * 
 	 * @param i int
 	 * @return int
@@ -30,28 +30,28 @@ public interface List<E> {
 	E get(int i) throws IndexOutOfBoundsException;
 
 	/**
-	 * Replaces the elements at index i with e, and returns the replaced element
+	 * Replaces the elements at index i with e, and returns the replaced element.
 	 * 
 	 * @param i       int
 	 * @param element E
 	 * @return E
 	 * @throws IndexOutOfBoundsException
 	 */
-	E set(int i, E element) throws IndexOutOfBoundsException;
+	E set(int i, E e) throws IndexOutOfBoundsException;
 
 	/**
 	 * Inserts an element e at index i, shifting all subsequent elements later in
-	 * the list
+	 * the list.
 	 * 
 	 * @param i       int
 	 * @param element E
 	 * @throws IndexOutOfBoundsException
 	 */
-	void add(int i, E element) throws IndexOutOfBoundsException;
+	void add(int i, E e) throws IndexOutOfBoundsException;
 
 	/**
 	 * Removes and returns the element at index i, shifting subsequent elements
-	 * earlier in the list
+	 * earlier in the list.
 	 * 
 	 * @param i int
 	 * @return int

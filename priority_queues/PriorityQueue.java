@@ -26,7 +26,7 @@ public interface PriorityQueue<K, V> {
 	 * @return
 	 * @throws IllegalAccessException
 	 */
-	Entry<K, V> insert(K key, V value) throws IllegalArgumentException;
+	Entry<K, V> insert(K k, V v) throws IllegalArgumentException;
 
 	/**
 	 * Returns (but does not remove) a priority queue entry (k, v) having minimal

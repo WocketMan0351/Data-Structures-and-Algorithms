@@ -33,17 +33,17 @@ public class HeapAdaptablePriorityQueue<K, V> extends HeapPriorityQueue<K, V> im
 	}
 
 	/**
-	 * Validates an entry to ensure it is location-aware.
+	 * Validates entry e to ensure it is location-aware.
 	 * 
 	 * @param entry
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	protected AdaptablePQEntry<K, V> validate(Entry<K, V> entry) throws IllegalArgumentException {
-		if (!(entry instanceof AdaptablePQEntry)) {
+	protected AdaptablePQEntry<K, V> validate(Entry<K, V> e) throws IllegalArgumentException {
+		if (!(e instanceof AdaptablePQEntry)) {
 			throw new IllegalArgumentException("Invalid entry");
 		}
-		AdaptablePQEntry<K, V> locator = (AdaptablePQEntry<K, V>) entry; // safe cast
+		AdaptablePQEntry<K, V> locator = (AdaptablePQEntry<K, V>) e; // safe cast
 		int i = locator.getIndex();
 		if (i >= heap.size() || heap.get(i) != locator) {
 			throw new IllegalArgumentException("Invalid entry");
@@ -73,16 +73,16 @@ public class HeapAdaptablePriorityQueue<K, V> extends HeapPriorityQueue<K, V> im
 		}
 	}
 
-	public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
-		checkKey(key);
-		Entry<K, V> newest = new AdaptablePQEntry(key, value, heap.size());
+	public Entry<K, V> insert(K k, V v) throws IllegalArgumentException {
+		checkKey(k);
+		Entry<K, V> newest = new AdaptablePQEntry(k, v, heap.size());
 		heap.add(newest);
 		upheap(heap.size() - 1);
 		return newest;
 	}
 
-	public void remove(Entry<K, V> entry) throws IllegalArgumentException {
-		AdaptablePQEntry<K, V> locator = validate(entry);
+	public void remove(Entry<K, V> e) throws IllegalArgumentException {
+		AdaptablePQEntry<K, V> locator = validate(e);
 		int i = locator.getIndex();
 		if (i == heap.size() - 1) { // entry is at last position
 			heap.remove(heap.size() - 1); // so just remove it
@@ -93,16 +93,16 @@ public class HeapAdaptablePriorityQueue<K, V> extends HeapPriorityQueue<K, V> im
 		}
 	}
 
-	public void replaceKey(Entry<K, V> entry, K key) throws IllegalArgumentException {
-		AdaptablePQEntry<K, V> locator = validate(entry);
-		checkKey(key);
-		locator.setKey(key);
+	public void replaceKey(Entry<K, V> e, K k) throws IllegalArgumentException {
+		AdaptablePQEntry<K, V> locator = validate(e);
+		checkKey(k);
+		locator.setKey(k);
 		bubble(locator.getIndex());
 	}
 
-	public void replaceValue(Entry<K, V> entry, V value) throws IllegalArgumentException {
-		AdaptablePQEntry<K, V> locator = validate(entry);
-		locator.setValue(value);
+	public void replaceValue(Entry<K, V> e, V v) throws IllegalArgumentException {
+		AdaptablePQEntry<K, V> locator = validate(e);
+		locator.setValue(v);
 	}
 
 }
