@@ -12,6 +12,14 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 	private int prime; // prime factor
 	private long scale, shift; // the shift and scaling factors
 
+	public AbstractHashMap() {
+		this(17); // default capacity
+	}
+
+	public AbstractHashMap(int capacity) {
+		this(capacity, 109345121); // default prime
+	}
+
 	public AbstractHashMap(int capacity, int prime) {
 		this.capacity = capacity;
 		this.prime = prime;
@@ -19,14 +27,6 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 		scale = rand.nextInt(prime - 1) + 1;
 		shift = rand.nextInt(prime);
 		createTable();
-	}
-
-	public AbstractHashMap(int capacity) {
-		this(capacity, 109345121); // default prime
-	}
-
-	public AbstractHashMap() {
-		this(17); // default capacity
 	}
 
 	public int size() {
@@ -67,12 +67,43 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
 		}
 	}
 
-	// protected absract methods to be implemented by subclasses
+	// protected abstract methods to be implemented by subclasses
+
+	/**
+	 * This method should create an initially empty table ahving size equal to a
+	 * designated capacity instance variable.
+	 */
 	protected abstract void createTable();
 
+	/**
+	 * This method should mimic the semantics of the public get method, but for a
+	 * key k that is known to hash to a bucket h.
+	 * 
+	 * @param h
+	 * @param k
+	 * @return
+	 */
 	protected abstract V bucketGet(int h, K k);
 
+	/**
+	 * This method should mimic the semantics of the public put method, but for a
+	 * key k that is known to hash to bucket h.
+	 * 
+	 * @param h
+	 * @param k
+	 * @param v
+	 * @return
+	 */
 	protected abstract V bucketPut(int h, K k, V v);
 
+	/**
+	 * This method should mimic the semantics of the public remove method, but for a
+	 * key k known to hash to bucket h.
+	 * 
+	 * @param h
+	 * @param k
+	 * @return
+	 */
 	protected abstract V bucketRemove(int h, K k);
+
 }

@@ -6,7 +6,7 @@ import maps.UnsortedTableMap;
 import priority_queues.Entry;
 
 /**
- * Implements a hash table with separate chaining.
+ * Implements a hash table that handles collisions with separate chaining.
  */
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	// a fixed capacity array of unsortedTableMap that serve as buckets

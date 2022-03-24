@@ -23,11 +23,11 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 			return value;
 		}
 
-		protected void setKey(K key) {
+		public void setKey(K key) {
 			this.key = key;
 		}
 
-		protected V setValue(V value) {
+		public V setValue(V value) {
 			V old = value;
 			this.value = value;
 			return old;
