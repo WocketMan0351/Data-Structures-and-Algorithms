@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import maps.UnsortedTableMap;
 import priority_queues.Entry;
 
+/**
+ * Implements a hash table with separate chaining.
+ */
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	// a fixed capacity array of unsortedTableMap that serve as buckets
 	private UnsortedTableMap<K, V>[] table; // initialized within createTable
@@ -69,7 +72,7 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	}
 
 	/**
-	 * Returns an iterable colelction of all key-value entries of the map.
+	 * Returns an iterable collection of all key-value entries of the map.
 	 */
 	public Iterable<Entry<K, V>> entrySet() {
 		ArrayList<Entry<K, V>> buffer = new ArrayList<>();
