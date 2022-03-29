@@ -51,7 +51,7 @@ public interface SortedMap<K, V> extends Map<K, V> {
 	Entry<K, V> higherEntry(K k);
 
 	/**
-	 * Returns an iteration of all entries with key greater tahn or equal to k1, but
+	 * Returns an iteration of all entries with key greater than or equal to k1, but
 	 * strictly less than k2.
 	 * 
 	 * @return Entry
