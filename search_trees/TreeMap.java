@@ -472,21 +472,21 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
 	/**
 	 * HOOK FOR BALANCED TREE SUBCLASSES
 	 */
-	public void rebalanceAccess(Position<Entry<K, V>> p) {
+	protected void rebalanceAccess(Position<Entry<K, V>> p) {
 
 	}
 
 	/**
 	 * HOOK FOR BALANCED TREE SUBCLASSES
 	 */
-	public void rebalanceInsert(Position<Entry<K, V>> p) {
+	protected void rebalanceInsert(Position<Entry<K, V>> p) {
 
 	}
 
 	/**
 	 * HOOK FOR BALANCED TREE SUBCLASSES
 	 */
-	public void rebalanceDelete(Position<Entry<K, V>> p) {
+	protected void rebalanceDelete(Position<Entry<K, V>> p) {
 
 	}
 
