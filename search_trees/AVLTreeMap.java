@@ -95,6 +95,9 @@ public class AVLTreeMap<K, V> extends TreeMap<K, V> {
 		rebalance(p);
 	}
 
+	/**
+	 * Overrides the TreeMap rebalancing hook that is called after a deletion.
+	 */
 	protected void rebalanceDelete(Position<Entry<K, V>> p) {
 		if (!isRoot(p)) {
 			rebalance(parent(p));
