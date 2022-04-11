@@ -30,7 +30,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 		}
 	}
 
-	private Node<E> head = null;
+	public Node<E> head = null;
 	private Node<E> tail = null;
 	private int size = 0;
 

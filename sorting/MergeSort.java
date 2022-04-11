@@ -3,14 +3,25 @@ package sorting;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import priority_queues.DefaultComparator;
 import queues.LinkedQueue;
 import queues.Queue;
 
 /**
  * Sorts a sequence S of size n in O(n log n) time, assuming two elements of S
  * can be compared in O(1) time.
+ * 
+ * @param <E>
  */
 public class MergeSort {
+
+	/**
+	 * Cleaner interface for mergeSort(K[] S, Comparator<K> comp). Uses the default
+	 * comparator.
+	 */
+	public static <K> void mergeSort(K[] S) {
+		mergeSort(S, new DefaultComparator<K>());
+	}
 
 	/**
 	 * Merge-sort contents of array S.
