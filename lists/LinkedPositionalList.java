@@ -86,6 +86,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 	/**
 	 * Returns an iterable representation of the list's positions.
 	 */
+	@Override
 	public Iterable<Position<E>> positions() {
 		return new PositionIterable();
 	}
@@ -112,6 +113,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 	/**
 	 * Returns an iterator of the elements stored in the list.
 	 */
+	@Override
 	public Iterator<E> iterator() {
 		return new ElementIterator();
 	}

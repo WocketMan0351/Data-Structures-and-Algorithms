@@ -1,5 +1,8 @@
 package graphs;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import hash_tables.ProbeHashMap;
 import lists.LinkedPositionalList;
 import lists.Position;
@@ -147,6 +150,88 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
 			throw new IllegalArgumentException("Invalid edge");
 		}
 		return edge;
+	}
+
+	/**
+	 * Performs depth-first search of Graph g starting at Vertex u. Plunges
+	 * depth-first into g without regard for which edge it takes until it cannot go
+	 * any further, at which point it backtracks and continues.
+	 * 
+	 * Runs in O(n + m) time for n vertices reachable from u and m incident edges to
+	 * those vertices.
+	 */
+	public static <V, E> void depthFirstSearch(Graph<V, E> g, Vertex<V> u, Set<Vertex<V>> known,
+			Map<Vertex<V>, Edge<E>> forest) {
+		known.add(u); // u has been discovered
+		for (Edge<E> e : g.outgoingEdges(u)) { // for every outgoing edge from u
+			Vertex<V> v = g.opposite(u, e);
+			if (!known.contains(v)) {
+				forest.put(v, e); // e is the tree edge that discovered v
+				depthFirstSearch(g, v, known, forest); // recursively explore from v
+			}
+		}
+	}
+
+	/**
+	 * Returns an unordered list of edges comprising the directed path from Vertex u
+	 * to Vertex v. If v is unreachable from u, or if u equals v, an empty path is
+	 * returned. Runs in O(n) time.
+	 * 
+	 * @param forest must be a map resulting from a previous call to
+	 *               depthFirstSearch started at u.
+	 * 
+	 */
+	public static <V, E> PositionalList<Edge<E>> constructPath(Graph<V, E> g, Vertex<V> u, Vertex<V> v,
+			Map<Vertex<V>, Edge<E>> forest) {
+		PositionalList<Edge<E>> path = new LinkedPositionalList<>();
+		if (forest.get(v) != null) { // v was discovered during the search
+			Vertex<V> walk = v; // we construct the path from back to front
+			while (walk != u) {
+				Edge<E> edge = forest.get(walk);
+				path.addFirst(edge); // add edge to the front of the path
+				walk = g.opposite(walk, edge); // repeat with opposite endpoint
+			}
+		}
+		return path;
+	}
+
+	/**
+	 * Performs a depthFirstSearch for the entire graph and returns the
+	 * depthFirstSearch forest as a map.
+	 */
+	public static <V, E> Map<Vertex<V>, Edge<E>> depthFirstSearchComplete(Graph<V, E> g) {
+		Set<Vertex<V>> known = new HashSet<>();
+		Map<Vertex<V>, Edge<E>> forest = new ProbeHashMap<>();
+		for (Vertex<V> u : g.vertices()) {
+			if (!known.contains(u)) {
+				depthFirstSearch(g, u, known, forest); // (re)start the depthSearchFirst process
+			}
+		}
+		return forest;
+	}
+
+	/**
+	 * Performs a bread-first search of a Graph g starting at Vertex s.
+	 */
+	public static <V, E> void breadthFirstSearch(Graph<V, E> g, Vertex<V> s, Set<Vertex<V>> known,
+			Map<Vertex<V>, Edge<E>> forest) {
+		PositionalList<Vertex<V>> level = new LinkedPositionalList<>();
+		known.add(s);
+		level.addLast(s); // first level includes only u
+		while (!level.isEmpty()) {
+			PositionalList<Vertex<V>> nextLevel = new LinkedPositionalList<>();
+			for (Vertex<V> u : level) {
+				for (Edge<E> e : g.outgoingEdges(u)) {
+					Vertex<V> v = g.opposite(u, e);
+					if (!known.contains(v)) {
+						known.add(v);
+						forest.put(v, e); // e is the tree edge that discovered u
+						nextLevel.addLast(v); // v will be further considered in next pass
+					}
+				}
+			}
+			level = nextLevel; // relabel 'next' level to become the current
+		}
 	}
 
 	/**

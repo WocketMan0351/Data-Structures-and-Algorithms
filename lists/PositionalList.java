@@ -1,6 +1,8 @@
 package lists;
 
-public interface PositionalList<E> {
+import java.util.Iterator;
+
+public interface PositionalList<E> extends Iterable<E> {
 	/**
 	 * Returns the number of elements in the list.
 	 * 
@@ -99,4 +101,18 @@ public interface PositionalList<E> {
 	 * @throws IllegalStateException
 	 */
 	E remove(Position<E> p) throws IllegalStateException;
+
+	/**
+	 * Returns an iterator of the elements stored in the list.
+	 * 
+	 * @return iterator of the list's elements
+	 */
+	Iterator<E> iterator();
+
+	/**
+	 * Returns the positions of the list in iterable form from first to last.
+	 * 
+	 * @return iterable collection of the list's positions
+	 */
+	Iterable<Position<E>> positions();
 }
