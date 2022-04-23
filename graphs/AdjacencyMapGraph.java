@@ -5,12 +5,14 @@ import java.util.Set;
 
 import hash_tables.ProbeHashMap;
 import heaps.HeapAdaptablePriorityQueue;
+import heaps.HeapPriorityQueue;
 import lists.LinkedPositionalList;
 import lists.Position;
 import lists.PositionalList;
 import maps.Map;
 import priority_queues.AdaptablePriorityQueue;
 import priority_queues.Entry;
+import priority_queues.PriorityQueue;
 
 /**
  * An implementation for a graph structure using an adjacency map for each
@@ -287,8 +289,8 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
 
 	/**
 	 * Reconstructs a shortest path tree rooted at vertex s, given distance map d.
-	 * The tree is represented as a map from each reachable verex v (other than s)
-	 * to the edge e = (u, v) that is used to raech v from its parent u in the tree.
+	 * The tree is represented as a map from each reachable vertex v (other than s)
+	 * to the edge e = (u, v) that is used to reach v from its parent u in the tree.
 	 */
 	public static <V> Map<Vertex<V>, Edge<Integer>> shortestPathTree(Graph<V, Integer> g, Vertex<V> s,
 			Map<Vertex<V>, Integer> d) {
@@ -304,6 +306,44 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
 				}
 			}
 		}
+		return tree;
+	}
+
+	/**
+	 * Computes a minimum spanning tree of Gragh g using Kruskal's algorithm
+	 */
+	public static <V> PositionalList<Edge<Integer>> minimumSpanningTree(Graph<V, Integer> g) {
+		// tree is where we will store result as it is computed
+		PositionalList<Edge<Integer>> tree = new LinkedPositionalList<>();
+		// pq entries are edges of graph, with weights as keys
+		PriorityQueue<Integer, Edge<Integer>> pq = new HeapPriorityQueue<>();
+		// union-find forest of components of the graph
+		Partition<Vertex<V>> forest = new Partition<>();
+		// map each vertex to the forest position
+		Map<Vertex<V>, Position<Vertex<V>>> positions = new ProbeHashMap<>();
+
+		for (Vertex<V> v : g.vertices()) {
+			positions.put(v, forest.makeCluster(v));
+		}
+
+		for (Edge<Integer> e : g.edges()) {
+			pq.insert(e.getElement(), e);
+		}
+
+		int size = g.numVertices();
+		// while tree not spanning and unprocessed edges remain...
+		while (tree.size() != size - 1 && !pq.isEmpty()) {
+			Entry<Integer, Edge<Integer>> entry = pq.removeMin();
+			Edge<Integer> edge = entry.getValue();
+			Vertex<V>[] endpoints = g.endVertices(edge);
+			Position<Vertex<V>> a = forest.find(positions.get(endpoints[0]));
+			Position<Vertex<V>> b = forest.find(positions.get(endpoints[1]));
+			if (a != b) {
+				tree.addLast(edge);
+				forest.union(a, b);
+			}
+		}
+
 		return tree;
 	}
 
