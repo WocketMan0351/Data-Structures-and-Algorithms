@@ -10,11 +10,13 @@ public class RecursionWithArrays {
 		System.out.println("2) Binary Search Array");
 		System.out.println("3) Linear Sum");
 		System.out.println("4) Binary Sum");
+		System.out.println("5) Recursively Count '11' Occurrences");
 		System.out.print("\nChoose an option: ");
 
 		Scanner input = new Scanner(System.in);
 		String option = input.next();
 
+		// DRIVER CODE
 		switch (option) {
 		case "1":
 			int[] numbers = { 1, 2, 3, 4, 5 };
@@ -51,6 +53,10 @@ public class RecursionWithArrays {
 			int[] values2 = { 10, 10, 10, 10 };
 			System.out.println(Arrays.toString(values2));
 			System.out.println("Sum: " + binarySum(values2, 0, values2.length - 1));
+		case "5":
+			int[] values3 = { 11, 5, 11, 17, 3 };
+			System.out.println(Arrays.toString(values3));
+			System.out.println("11 occurs " + array11(values3, 0) + " time(s)");
 		default:
 			break;
 		}
@@ -67,7 +73,7 @@ public class RecursionWithArrays {
 	 * @param high an int
 	 * @return void
 	 */
-	public static void reverseArray(int[] arr, int low, int high) {
+	private static void reverseArray(int[] arr, int low, int high) {
 		if (low < high) {
 			int temp = arr[low];
 			arr[low] = arr[high];
@@ -84,7 +90,7 @@ public class RecursionWithArrays {
 	 * @param high an int
 	 * @return void
 	 */
-	public static void reverseArrayIterative(int[] arr, int low, int high) {
+	private static void reverseArrayIterative(int[] arr, int low, int high) {
 		do {
 			int temp = arr[low];
 			arr[low] = arr[high];
@@ -101,7 +107,7 @@ public class RecursionWithArrays {
 	 * @param target
 	 * @return
 	 */
-	public static boolean binarySearch(int[] data, int target) {
+	private static boolean binarySearch(int[] data, int target) {
 		return binarySearch(data, target, 0, data.length - 1);
 	}
 
@@ -142,7 +148,7 @@ public class RecursionWithArrays {
 	 * @param n    an int
 	 * @return int
 	 */
-	public static int linearSum(int[] data, int n) {
+	private static int linearSum(int[] data, int n) {
 		if (n == 0) {
 			return 0;
 		} else {
@@ -161,7 +167,7 @@ public class RecursionWithArrays {
 	 * @param n    an int
 	 * @return int
 	 */
-	public static int binarySum(int[] data, int low, int high) {
+	private static int binarySum(int[] data, int low, int high) {
 		if (low > high) {
 			return 0;
 		} else if (low == high) {
@@ -169,6 +175,16 @@ public class RecursionWithArrays {
 		} else {
 			int mid = (low + high) / 2;
 			return binarySum(data, low, mid) + binarySum(data, mid + 1, high);
+		}
+	}
+
+	private static int array11(int[] nums, int index) {
+		if (index == nums.length) {
+			return 0;
+		} else if (nums[index] == 11) {
+			return 1 + array11(nums, index + 1);
+		} else {
+			return array11(nums, index + 1);
 		}
 	}
 
