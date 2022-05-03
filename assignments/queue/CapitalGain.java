@@ -6,7 +6,6 @@ import java.util.Queue;
 public class CapitalGain {
 
 	public static void main(String[] args) {
-		System.out.println("This program is for ACO201 Project-02. Developed by Cody Worthen.\n");
 		String test1 = "buy 100 share(s) at $20 each;buy 20 share(s) at $24 each;buy 200 share(s) at $36 each;sell 150 share(s) at $30 each;buy 50 share(s) at $25 each;sell 200 share(s) at $35 each;";
 		String test2 = "buy 100 share(s) at $20 each;buy 20 share(s) at $24 each;buy 200 share(s) at $36 each;sell 150 share(s) at $30 each;buy 50 share(s) at $25 each;sell 2000 share(s) at $35 each;";
 		String test3 = "buy 10 shares at $100 each;sell 100 shares at $101 each;";
@@ -74,21 +73,26 @@ public class CapitalGain {
 			case "buy":
 				currentHoldings += transaction.getShares();
 				totalCostBasis += (transaction.getShares() * transaction.getPrice());
-				System.out.println("Bought " + transaction.getShares() + " shares" + " at $" + transaction.getPrice()
+				System.out.println("Bought " + transaction.getShares() + " shares" + " at $"
+						+ transaction.getPrice()
 						+ ". Current Holdings: " + currentHoldings + " shares.");
 				break;
 			case "sell":
 				if (transaction.getShares() <= currentHoldings) {
 					currentHoldings -= transaction.getShares();
 					totalProceeds += transaction.getShares() * transaction.getPrice();
-					System.out.println("Requested Sell Quantity: " + transaction.getShares() + " shares. Sold "
-							+ transaction.getShares() + " shares at $" + transaction.getPrice() + ". Current Holdings: "
-							+ currentHoldings + " shares.");
+					System.out.println(
+							"Requested Sell Quantity: " + transaction.getShares() + " shares. Sold "
+									+ transaction.getShares() + " shares at $"
+									+ transaction.getPrice() + ". Current Holdings: "
+									+ currentHoldings + " shares.");
 				} else if (transaction.getShares() > currentHoldings) {
 					totalProceeds += currentHoldings * transaction.getPrice();
 					System.out.println(
-							"Requested Sell Quantity: " + transaction.getShares() + " shares. Sold " + currentHoldings
-									+ " shares at $" + transaction.getPrice() + ". Current Holdings: 0 shares");
+							"Requested Sell Quantity: " + transaction.getShares() + " shares. Sold "
+									+ currentHoldings
+									+ " shares at $" + transaction.getPrice()
+									+ ". Current Holdings: 0 shares");
 					currentHoldings = 0;
 				}
 				break;

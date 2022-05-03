@@ -1,4 +1,5 @@
 package assignments.recursion;
+
 /**
  * Contains a two recursive methods. One checks if a String is a palindrome, and
  * the other finds the longest palindrome in a given String.
@@ -9,7 +10,6 @@ package assignments.recursion;
 public class ACORecursionPalindrome {
 
 	public static void main(String[] args) {
-
 		System.out.println("abcde: " + isPalindrome("abcde"));
 		System.out.println("aba: " + isPalindrome("aba"));
 		System.out.println("XabaX: " + isPalindrome("XabaX"));

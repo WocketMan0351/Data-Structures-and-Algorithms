@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class GraphProject {
 
 	public static void main(String[] args) {
-		System.out.println("ACO-201 Project-03, Developed by Cody Worthen.\n");
-
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter number of vertices: (test data)");
 //		int numVertices = in.nextInt();

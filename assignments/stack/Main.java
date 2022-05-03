@@ -3,8 +3,6 @@ package assignments.stack;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Team Members: Cody Worthen");
-
 		String str1 = "14 <= 4 - 3 * 2 + 18";
 		String input = str1;
 		System.out.println("\nInput: " + input);
@@ -108,7 +106,8 @@ public class Main {
 		case '/':
 			return a / b;
 		default:
-			return false; // makes operation(int a, char op, int b) instanceof Boolean, which calls its
+			return false; // makes operation(int a, char op, int b) instanceof Boolean, which calls
+							// its
 							// override
 		}
 	}
