@@ -6,7 +6,7 @@ public class GraphProject {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.print("Enter number of vertices: (test data)");
+		System.out.print("Enter number of vertices: (test data) ");
 //		int numVertices = in.nextInt();
 		int numVertices = 16;
 		System.out.print("\nEnter edge sequence: (test data)");
